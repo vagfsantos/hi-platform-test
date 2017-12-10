@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 
 
 import { AppComponent } from './app.component';
@@ -7,6 +8,7 @@ import { StoreComponent } from './store/store.component';
 import { HeaderComponent } from './store/header/header.component';
 import { ProductListComponent } from './store/product-list/product-list.component';
 import { CartComponent } from './store/cart/cart.component';
+import { ProductComponent } from './store/product-list/product/product.component';
 
 
 @NgModule({
@@ -15,10 +17,12 @@ import { CartComponent } from './store/cart/cart.component';
     StoreComponent,
     HeaderComponent,
     ProductListComponent,
-    CartComponent
+    CartComponent,
+    ProductComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]
