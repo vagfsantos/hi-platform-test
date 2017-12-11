@@ -18,6 +18,10 @@
 
     background-color: #fff;
     transition: .3s ease-in-out;
+
+    @media (max-width: 768px) {
+      width: 80%;
+    }
   }
 
   &__overlay{
