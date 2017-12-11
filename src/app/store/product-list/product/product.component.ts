@@ -15,6 +15,7 @@ export class ProductComponent implements OnInit {
   constructor(private cartService: CartService) { }
 
   ngOnInit() {
+    this.onRemoveProductFromcart();
   }
 
 
@@ -23,6 +24,14 @@ export class ProductComponent implements OnInit {
     this.addedToCart = true;
     this.product.quantity = this.quantity;
     this.cartService.add(this.product);
+  }
+
+  onRemoveProductFromcart() {
+    this.cartService
+      .onProductRemovedFromCart$
+      .subscribe( id => {
+        if( this.product.id === id ) this.addedToCart = false;
+      });
   }
 
   addDuplicateProduct(e) {

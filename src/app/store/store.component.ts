@@ -18,6 +18,7 @@ export class StoreComponent implements OnInit {
   ngOnInit() {
     this.getProducts();
     this.onAddProductTocart();
+    this.onRemoveProductFromcart();
   }
 
   getProducts() {
@@ -35,6 +36,15 @@ export class StoreComponent implements OnInit {
         this.productsInCart = this.cartService.getAll();
         this.calcTotalincart();
         this.cartService.toggleCart();
+      });
+  }
+
+  onRemoveProductFromcart() {
+    this.cartService
+      .onProductRemovedFromCart$
+      .subscribe( id => {
+        this.productsInCart = this.cartService.getAll();
+        this.calcTotalincart();
       });
   }
 

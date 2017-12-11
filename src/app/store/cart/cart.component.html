@@ -3,7 +3,7 @@
   <div class="cart__content">
     <p><b>Meu carrinho</b></p>
     <div *ngFor="let product of productsInCart" class="collection">
-      <a href="#" class="collection-item">
+      <a href="#" class="collection-item" (click)="removeProductFromCart($event, product.id)">
         {{ product.name }}
         <span class="badge">qtd: {{ product.quantity }}</span>
       </a>

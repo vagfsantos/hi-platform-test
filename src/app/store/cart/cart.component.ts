@@ -17,6 +17,11 @@ export class CartComponent implements OnInit {
     this.onToggleCart();
   }
 
+  removeProductFromCart(e, id) {
+    e.preventDefault();
+    this.cartService.remove(id);
+  }
+
   toggleCart(e) {
     e.preventDefault();
     this.cartService.toggleCart();
