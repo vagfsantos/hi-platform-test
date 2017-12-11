@@ -24,4 +24,9 @@ export class ProductComponent implements OnInit {
     this.product.quantity = this.quantity;
     this.cartService.add(this.product);
   }
+
+  addDuplicateProduct(e) {
+    e.preventDefault();
+    window.alert('Você já adicionou este produto!');
+  }
 }

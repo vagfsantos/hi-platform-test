@@ -8,12 +8,12 @@
     <input type="number" min="1" placeholder="QTD" [(ngModel)]="quantity"/>
   </div>
   <div class="card-action">
-    <div *ngIf="addedToCart; then addedLink else addLink" href="#" (click)="addProductTocart($event)">Adicionar ao carrinho</div>
+    <div *ngIf="addedToCart; then addedLink else addLink" href="#">Adicionar ao carrinho</div>
     <ng-template #addLink>
-      <a href="#" (click)="addProductTocart($event)">Adicionar ao carrinho</a>
+      <a href="#" class="product__add" (click)="addProductTocart($event)">Adicionar ao carrinho</a>
     </ng-template>
     <ng-template #addedLink>
-      <a href="#">Item Adicionado</a>
+      <a href="#" class="product__remove" (click)="addDuplicateProduct($event)">Item Adicionado</a>
     </ng-template>
   </div>
 </div>
