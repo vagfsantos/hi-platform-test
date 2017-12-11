@@ -1,3 +1,13 @@
-<p>
-  product works!
-</p>
+<div class="card">
+  <div class="card-image">
+    <img src="{{ product.picture }}" alt="{{ product.name }}">
+    <span class="card-title">{{ product.name }}</span>
+  </div>
+  <div class="card-content">
+    <p>{{ product.price | currency:'BRL' }}</p>
+    <input type="number" min="1" placeholder="QTD"/>
+  </div>
+  <div class="card-action">
+    <a href="#">Adicionar ao carrinho</a>
+  </div>
+</div>
