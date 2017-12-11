@@ -1,3 +1,4 @@
+import { CartService } from './../../cart.service';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -7,10 +8,25 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CartComponent implements OnInit {
   @Input() productsInCart;
+  @Input() totalInCart;
+  private cartIsOpen;
 
-  constructor() { }
+  constructor(private cartService: CartService) { }
 
   ngOnInit() {
+    this.onToggleCart();
   }
 
+  toggleCart(e) {
+    e.preventDefault();
+    this.cartService.toggleCart();
+  }
+
+  onToggleCart() {
+    this.cartService
+      .onToggleCart$
+      .subscribe( isOpened => {
+        this.cartIsOpen = isOpened;
+      });
+  }
 }

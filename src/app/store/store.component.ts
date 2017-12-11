@@ -11,6 +11,7 @@ import { CartService } from '../cart.service';
 export class StoreComponent implements OnInit {
   private productList: any;
   private productsInCart: any = [];
+  private totalInCart: number = 0;
 
   constructor(private http: Http, private cartService: CartService) { }
 
@@ -32,7 +33,14 @@ export class StoreComponent implements OnInit {
       .onProductAddedToCart$
       .subscribe( product => {
         this.productsInCart = this.cartService.getAll();
-        console.log(this.productsInCart)
+        this.calcTotalincart();
+        this.cartService.toggleCart();
       });
+  }
+
+  calcTotalincart() {
+    this.totalInCart = this.productsInCart.reduce( (initial, product ) => {
+      return initial += product.price * product.quantity;
+    }, 0)
   }
 }

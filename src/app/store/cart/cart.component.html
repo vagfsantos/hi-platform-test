@@ -1,9 +1,20 @@
-<p>
-  cart works!
-</p>
-<div *ngFor="let product of productsInCart" class="collection">
-  <a href="#" class="collection-item">
-    <span class="badge">qtd: {{ product.quantity }}</span>
-    {{ product.name }}
-  </a>
+<div class="cart" [class.opened]="cartIsOpen">
+  <div class="cart__overlay" (click)="toggleCart($event)"></div>
+  <div class="cart__content">
+    <p><b>Meu carrinho</b></p>
+    <div *ngFor="let product of productsInCart" class="collection">
+      <a href="#" class="collection-item">
+        {{ product.name }}
+        <span class="badge">qtd: {{ product.quantity }}</span>
+      </a>
+    </div>
+
+    <div *ngIf="totalInCart">
+      <p>Total: {{ totalInCart | currency: 'BRL' }}</p>
+    </div>
+
+    <div *ngIf="!totalInCart">
+      <p>Carrinho vazio =(</p>
+    </div>
+  </div>
 </div>
