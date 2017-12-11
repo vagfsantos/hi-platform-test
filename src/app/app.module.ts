@@ -10,6 +10,7 @@ import { ProductListComponent } from './store/product-list/product-list.componen
 import { CartComponent } from './store/cart/cart.component';
 import { ProductComponent } from './store/product-list/product/product.component';
 import { CartService } from './cart.service';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { CartService } from './cart.service';
   ],
   imports: [
     BrowserModule,
-    HttpModule
+    HttpModule,
+    FormsModule
   ],
   providers: [
     CartService

@@ -1,6 +1,9 @@
 <p>
   cart works!
 </p>
-<div *ngFor="let product of productsInCart">
-  <span>a</span>
+<div *ngFor="let product of productsInCart" class="collection">
+  <a href="#" class="collection-item">
+    <span class="badge">qtd: {{ product.quantity }}</span>
+    {{ product.name }}
+  </a>
 </div>

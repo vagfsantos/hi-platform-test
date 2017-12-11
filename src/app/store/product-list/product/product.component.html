@@ -5,9 +5,15 @@
   </div>
   <div class="card-content">
     <p>{{ product.price | currency:'BRL' }}</p>
-    <input type="number" min="1" placeholder="QTD"/>
+    <input type="number" min="1" placeholder="QTD" [(ngModel)]="quantity"/>
   </div>
   <div class="card-action">
-    <a href="#" (click)="addProductTocart($event)">Adicionar ao carrinho</a>
+    <div *ngIf="addedToCart; then addedLink else addLink" href="#" (click)="addProductTocart($event)">Adicionar ao carrinho</div>
+    <ng-template #addLink>
+      <a href="#" (click)="addProductTocart($event)">Adicionar ao carrinho</a>
+    </ng-template>
+    <ng-template #addedLink>
+      <a href="#">Item Adicionado</a>
+    </ng-template>
   </div>
 </div>
