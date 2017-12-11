@@ -9,6 +9,7 @@ import { HeaderComponent } from './store/header/header.component';
 import { ProductListComponent } from './store/product-list/product-list.component';
 import { CartComponent } from './store/cart/cart.component';
 import { ProductComponent } from './store/product-list/product/product.component';
+import { CartService } from './cart.service';
 
 
 @NgModule({
@@ -24,7 +25,9 @@ import { ProductComponent } from './store/product-list/product/product.component
     BrowserModule,
     HttpModule
   ],
-  providers: [],
+  providers: [
+    CartService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

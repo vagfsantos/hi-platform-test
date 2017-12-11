@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map'
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-store',
@@ -9,11 +10,13 @@ import 'rxjs/add/operator/map'
 })
 export class StoreComponent implements OnInit {
   private productList: any;
+  private productsInCart: any = [];
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private cartService: CartService) { }
 
   ngOnInit() {
     this.getProducts();
+    this.onAddProductTocart();
   }
 
   getProducts() {
@@ -22,5 +25,14 @@ export class StoreComponent implements OnInit {
       .subscribe( data => {
         this.productList = data;
       })
+  }
+
+  onAddProductTocart() {
+    this.cartService
+      .onProductAddedToCart$
+      .subscribe( product => {
+        this.productsInCart = this.cartService.getAll();
+        console.log(this.productsInCart)
+      });
   }
 }
